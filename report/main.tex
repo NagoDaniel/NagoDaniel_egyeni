@@ -12,7 +12,7 @@
 \captionsetup{font=small}
 
 \title{3D HP-hajtogatás evolúciós algoritmussal:\\a mutáció helyének hatása}
-\author{Nagó Dániel}
+\author{Nágó Dániel}
 \date{Bioinformatikai Algoritmusok \\ Sapientia EMTE, Marosvásárhely}
 
 \begin{document}
@@ -28,7 +28,9 @@ kivéve, hogy a túl meredeken növekvő \texttt{tail\_exp} profil a 2D hosszú
 láncoknál rosszabb energiát ad. A 3D hajtogatás minden vizsgált szekvencián
 szignifikánsan alacsonyabb energiát ér el, mint a 2D. A populáció változatossága
 minden profilnál az első 100 generációban a kezdeti érték harmadára vagy kisebbre
-esik.
+esik. Feltáró mérésben a mutációs ráta növelése rontott az eredményen, a véletlen
+új egyedek beillesztése a 36 aminosavas láncon javulást mutatott, ez azonban 30
+futással nem szignifikáns.
 \end{abstract}
 
 \section{A probléma}
@@ -52,62 +54,49 @@ végét mozdítja el.
 lépéssorozat melyik pozícióit mutáljuk? Futásidőn az optimum eléréséhez szükséges
 kiértékelések számát, eredményen a sikerarányt és a végső energiát értjük. A
 vizsgálat arra irányul, hogy javít-e az eredményen, ha a lánc végéhez közeli
-lépéseket nagyobb valószínűséggel mutáljuk. Egy korai lépés mutálása ugyanis
-nagyobb változást okoz, mint egy késői. Az átlagos mutációs ráta állandó,
-csak az eloszlás alakja változik. Adaptív változatokat is vizsgálunk, amelyekben
+lépéseket nagyobb valószínűséggel mutáljuk. Adaptív változatokat is vizsgálunk, amelyekben
 az eloszlás a futás során módosul.
 
 \paragraph{Másodlagos kérdés.} Több H-H kapcsolatot ér-e el a 3D változat, mint
-a 2D, és mennyivel több kiértékelést igényel az optimum elérése?
+a 2D?
 
 \section{Hipotézisek}
 
-Az öt hipotézis szövege a végső mérés előtt készült, és azóta nem változott. Az
-eredeti szöveg négy fix profilt tartalmazott: egyenletes (\texttt{uniform}), a
-vég felé lineárisan növekvő (\texttt{tail}), a vég felé exponenciálisan növekvő
-(\texttt{tail\_exp}) és fordított kontroll, amely az eleje felé növekszik
-(\texttt{head}). Ezek mellett egy adaptív profil (\texttt{adaptive}) szerepelt. A
-hipotézisek rögzítése után három további adaptív profil került a vizsgálatba
-(\texttt{adaptive\_rev}, \texttt{adaptive\_exp}, \texttt{adaptive\_exp\_rev}),
-ezért ezek eredményét feltáró jellegűnek tekintjük.
+A négy hipotézis szövege a végső mérés előtt készült, és azóta nem változott. A
+hipotézisek rögzítése után három adaptív profil (\texttt{adaptive\_rev},
+\texttt{adaptive\_exp}, \texttt{adaptive\_exp\_rev}) került a vizsgálatba, ezért
+ezek eredményét feltáró jellegűnek tekintjük. A profilokat a Módszer fejezet
+írja le.
 
 \begin{description}
 \item[H1] A vég felé növekvő profilok az egyenletesnél kevesebb kiértékelésből és
 kevesebb generációból érik el a célenergiát, és a végső energiájuk nem rosszabb.
-Egy késői lépés mutálása a hajtogatás kisebb részét változtatja meg, ezért a jó
-részmegoldások megmaradnak.
-\item[H2] A fordított profil rosszabb az egyenletesnél. Ha H1 és H2 is teljesül,
-az irány számít, nem csupán az, hogy a mutáció nem egyenletes.
+\item[H2] A fordított profil rosszabb az egyenletesnél.
 \item[H3] Az adaptív profil, amely a vég felé növekvő profilról fokozatosan
 egyenletesre vált, legalább olyan jó, mint a legjobb fix profil.
 \item[H4] A 3D változat ugyanazon a szekvencián több H-H kapcsolatot ér el, mint a
-2D. Minden 2D hajtogatás 3D-ben is érvényes, ezért a valódi optimumra ez biztos.
-A GA eredményére mérjük.
-\item[H5] A 3D változat több kiértékelést igényel a célenergia eléréséhez, mert a
-keresési tér nagyobb: $5^{n-2}$ 3D-ben és $3^{n-2}$ 2D-ben.
+2D.
 \end{description}
 
-Az eredeti döntési szabály szerint egy hipotézist akkor fogadunk el, ha legalább
-30 független futás után a Mann-Whitney-próba $p<0{,}05$ értéket ad, és az eltérés
-iránya megegyezik a várttal. A vizsgálat sok összehasonlítást tartalmaz, ezért a
-szabályt a mérés után kiegészítettük: a hipotézist csak akkor tekintjük
-igazoltnak, ha a Holm-korrekcióval módosított $p$-érték is 0,05 alatt marad.
-Mindkét értéket közöljük.
+Az eredeti döntési szabály szerint egy hipotézist akkor tekintünk igazoltnak, ha
+legalább 30 független futás után a Mann-Whitney-próba $p<0{,}05$ értéket ad, és az
+eltérés iránya megegyezik a várttal. A vizsgálat sok összehasonlítást tartalmaz,
+ezért a szabályt a mérés után kiegészítettük: a Holm-korrekcióval módosított
+$p$-értéknek is 0,05 alatt kell maradnia. Mindkét értéket közöljük.
 
 \section{Módszer}
 
 \paragraph{A genetikus algoritmus.} A populáció 200 egyedből áll. A szelekció
 háromegyedes versenyszelekció, a keresztezés egypontos, 0,9 valószínűséggel. A
 két legjobb egyed változatlanul kerül a következő generációba. A mutáció minden
-lépést külön, saját valószínűséggel módosít, az átlagos ráta $1/(n-2)$ minden
-profilnál. Az érvénytelen hajtogatás (két aminosav ugyanazon a ponton)
+lépést külön, saját valószínűséggel módosít. Az érvénytelen hajtogatás (két aminosav ugyanazon a ponton)
 ütközésenként 5 büntetőpontot kap. A futás leáll, ha eléri a célenergiát. Egy
 generáció 198 új egyedet értékel ki, ezért a kiértékelések száma $200+198g$, ahol
-$g$ a generációk száma. A kiértékelés és a generáció így gyakorlatilag ugyanazt
-méri, és mindkettőt rögzítjük.
+$g$ a generációk száma. A kettő így gyakorlatilag ugyanazt méri, ezért az
+eredményekben csak a kiértékeléseket közöljük.
 
-\paragraph{A nyolc mutációs profil.} Minden profil azonos átlagos rátával
-dolgozik, csak az eloszlás alakja különbözik.
+\paragraph{A nyolc mutációs profil.} Minden profil azonos, $1/(n-2)$ átlagos
+rátával dolgozik, csak az eloszlás alakja különbözik.
 \begin{itemize}
 \item \texttt{uniform}: minden lépés azonos eséllyel mutál.
 \item \texttt{tail}: a mutáció esélye a lánc vége felé lineárisan nő.
@@ -120,8 +109,8 @@ lineárisan átmegy \texttt{uniform}-ba. Az \texttt{adaptive\_exp} ugyanez
 végére \texttt{tail}-lé alakul. Exponenciális párja az
 \texttt{adaptive\_exp\_rev}, amely \texttt{tail\_exp}-be vált.
 \end{itemize}
-Az $1{,}2$ alapot a pilot tíz magján választottuk az $1{,}1$, $1{,}2$ és $1{,}3$
-közül (77, 82 és 76 siker 180-ból).
+Az $1{,}2$ alapot előzetes mérésben választottuk az $1{,}1$, $1{,}2$ és $1{,}3$
+közül.
 
 \paragraph{Szekvenciák és célenergiák.} Öt szekvenciát vizsgálunk mindkét
 rácson: három rövidet (20, 24 és 25 aminosav) és két hosszabbat (36 és 48
@@ -147,16 +136,14 @@ ismert legjobb értékek (arXiv 2105.13226). A 3D $-11$, $-13$ és $-9$
 célenergiát saját pontos számítással optimálisnak igazoltuk.
 
 \paragraph{Mérés.} A végső mérés 8 profilból, 5 szekvenciából, 2 rácsból és 30
-magból áll, összesen 2400 futásból. A magok 0-tól 29-ig számozottak, és eltérnek
-a pilot magjaitól. A rövid szekvenciáknál a keret 300 generáció (59\,600
+magból áll, összesen 2400 futásból. A magok 0-tól 29-ig számozottak. A rövid szekvenciáknál a keret 300 generáció (59\,600
 kiértékelés). A hosszabb láncoknál 1500 generációra (297\,200 kiértékelés)
-emeltük, mert a pilotban 300 generációval szinte sosem találtak megoldást.
+emeltük, mert az előzetes mérésben 300 generációval szinte sosem találtunk
+megoldást.
 
 \paragraph{Statisztika.} Minden profilt az egyenletessel hasonlítunk össze,
 ugyanazon rács és szekvencia mellett. A kiértékelések számát és az energiát
-Mann-Whitney-próbával, a sikerek számát Fisher-próbával vizsgáljuk. A
-hatásméret a rang-biszeriális $\delta$, amely $-1$ és $1$ közé esik, a $0$
-eltérés hiányát jelenti. A sikertelen futás a teljes keretet felhasználta, ezért
+Mann-Whitney-próbával, a sikerek számát Fisher-próbával vizsgáljuk. A sikertelen futás a teljes keretet felhasználta, ezért
 ennyi kiértékeléssel szerepel az elemzésben. Az ERT (várható futásidő a célig)
 az összes futás összes kiértékelése osztva a sikeres futások számával. Ha egy
 cellában nincs sikeres futás, az ERT nem értelmezhető.
@@ -165,10 +152,9 @@ cellában nincs sikeres futás, az ERT nem értelmezhető.
 lépéssorozatai közötti átlagos páronkénti Hamming-távolsággal mérjük, elosztva a
 sztring hosszával. Értéke 0, ha minden egyed azonos, véletlen populációra pedig
 $(k-1)/k$, ahol $k$ a lehetséges lépések száma (2D-ben 0,67, 3D-ben 0,8). A mérés
-minden ötödik generációban történik. Ehhez a
-GA a teljes keretet felhasználja, a célenergia elérésekor sem áll le, így az egy
-cellához tartozó futások azonos hosszúak. A magok és a beállítások a végső
-mérésével egyeznek (0 és 29 között). Minden profilt az egyenletessel
+minden ötödik generációban történik. A GA ilyenkor a célenergia elérésekor sem
+áll le, hanem a teljes keretet felhasználja, így az egy cellához tartozó futások
+azonos hosszúak. A magok és a beállítások megegyeznek a végső mérésével. Minden profilt az egyenletessel
 Mann-Whitney-próbával hasonlítunk össze a futás egészére átlagolt és a végső
 változatosságon, összesen 70 próbával, Holm-korrekcióval. A változatosság nem
 szerepelt a hipotézisek között, ezért vizsgálata feltáró jellegű.
@@ -194,15 +180,12 @@ első négy sor a fix, az utolsó négy az adaptív profil.
 \small
 \setlength{\tabcolsep}{4pt}
 \input{../results/final_ert.tex}
-\caption{ERT ezer kiértékelésben (az összes futás kiértékelésének száma osztva a sikeres futások számával), kisebb érték jobb. A \emph{nincs} azt jelenti, hogy egyetlen futás sem volt sikeres. Félkövér: a legjobb érték oszloponként.}
+\caption{ERT ezer kiértékelésben, kisebb érték jobb. A \emph{nincs} azt jelenti, hogy egyetlen futás sem volt sikeres. Félkövér: a legjobb érték oszloponként.}
 \end{table}
 
-A rövid szekvenciáknál a 3D célt a futások többsége eléri: a 20 és 25
-aminosavas láncnál profilonként 16 és 25 közötti a sikeres futások száma. A 24
-aminosavas lánc nehezebb, itt 3D-ben 3 és 11, 2D-ben 2 és 8 sikeres futás van
-profilonként. A 36 aminosavas láncot 3D-ben profilonként 1 és 8 futás oldja meg,
-2D-ben összesen egyetlen futás. A 48 aminosavas láncot egyik profil sem éri el,
-egyik rácson sem. A 300 futásra jutó összes sikeres futás profilonként:
+A 48 aminosavas láncot egyik profil sem oldja meg, egyik rácson sem. A 36
+aminosavas láncot 2D-ben összesen egyetlen futás oldja meg, 3D-ben profilonként 1
+és 8. A 300 futásra jutó összes sikeres futás profilonként:
 \texttt{tail} 91, \texttt{adaptive\_exp\_rev} 89, \texttt{adaptive\_rev} 79,
 \texttt{adaptive\_exp} 75, \texttt{uniform} 73, \texttt{head} 68,
 \texttt{adaptive} 64, \texttt{tail\_exp} 59.
@@ -243,11 +226,10 @@ $-26$ között van, a cél $-31$.
 
 A 2. ábra csak a sikeres futásokat tartalmazza, ezért az alacsony érték
 félrevezető lehet, ha az oszlop alatt kevés futás áll: a lassú profil is
-gyorsnak látszik, ha csak a szerencsés futásai szerepelnek. Ezért a próbákban és
-az ERT számításában a sikertelen futás a teljes keretet kapja. A 3D 20 és 25
+gyorsnak látszik, ha csak a szerencsés futásai szerepelnek. A 3D 20 és 25
 aminosavas láncnál a sikeres futások mediánja 6000 és 12\,000 kiértékelés
 között van, a profilok dobozai átfednek. A 3D 24 aminosavas láncnál a medián
-6000 és 24\,000 között szór, de a \texttt{tail\_exp} és az
+6000 és 24\,000 között van, de a \texttt{tail\_exp} és az
 \texttt{adaptive\_rev} oszlopa mindössze 4 sikeres futásra épül. A 3D 25
 aminosavas láncnál a \texttt{tail} és az \texttt{adaptive\_exp\_rev} éri el
 legtöbbször a célt (25/30), az egyenletes profil 22 alkalommal, a különbség
@@ -291,10 +273,9 @@ generáció után pedig alig változik. A rövid láncoknál a stabil érték 0,
 el változatosságának nagy részét, amikor a legjobb fitnesz is megáll (3. ábra). A
 profilok görbéi nagyrészt egybeesnek, eltérést a meredek profilok mutatnak. A
 \texttt{tail\_exp} futásátlagos változatossága mind a 10 cellában szignifikánsan
-kisebb az egyenletesénél (Holm utáni $p<0{,}05$), a végső változatossága 6 cellában.
-Az \texttt{adaptive\_exp\_rev} végső változatossága 7 cellában, futásátlaga 6
-cellában kisebb. A \texttt{head} futásátlaga 5 cellában kisebb, a \texttt{tail}
-csak a 36 aminosavas láncnál, 2D-ben és 3D-ben. A különbségek a hosszú láncoknál
+kisebb az egyenletesénél (Holm utáni $p<0{,}05$). A többi profil futásátlaga
+kevesebb cellában tér el szignifikánsan, a \texttt{tail}-é csak a 36 aminosavas
+láncnál. A különbségek a hosszú láncoknál
 a legnagyobbak: a 3D 36 aminosavas láncnál a \texttt{tail\_exp} végső mediánja
 0,10, az egyenleseé 0,13.
 \end{landscape}
@@ -325,7 +306,6 @@ H1 & \texttt{tail} és \texttt{tail\_exp} kevesebb kiértékelés, nem rosszabb 
 H2 & \texttt{head} rosszabb, mint \texttt{uniform} & Nem igazolt. 10 próbából 0 szignifikáns. A \texttt{head} összesen 68 sikert ad, az egyenletes 73-at. \\
 H3 & Az adaptív nem rosszabb a legjobb fixnél & Nem cáfolt. 40 próbából 4 nyers $p<0{,}05$ az adaptív kárára, Holm után 0. Egyik adaptív profil sem szignifikánsan jobb az egyenletesnél. \\
 H4 & 3D energiája kisebb & Igazolt. 40 próbából 40 szignifikáns Holm után is. \\
-H5 & 3D több kiértékelést igényel & Nem igazolt. 40 próbából 0. A 3D célt gyakrabban éri el a GA, mint a 2D célt. \\
 \bottomrule
 \end{tabular}
 \caption{Várt és kapott eredmények hipotézisenként. Minden próba egyoldali
@@ -334,13 +314,48 @@ Mann-Whitney-próba, Holm-korrekcióval hipotézisenként.}
 
 A H3 próbájánál a legjobb fix profilt ugyanazokon az adatokon választottuk, a
 legkisebb ERT alapján, ezért a próba szigorúbb az adaptív profilokkal szemben. A
-négy nyers szignifikáns eset: 2D 25 és 3D 25 az \texttt{adaptive}, 3D 24 az
-\texttt{adaptive\_rev} és az \texttt{adaptive\_exp}. A Holm-korrekció után egyik
-sem marad meg.
+négy nyers szignifikáns eset egyike sem marad meg a Holm-korrekció után.
 
-A H5 az ellenkezőjét mutatja: a legtöbb esetben a 3D célt kevesebb
-kiértékelésből éri el a GA, mint a 2D célt. A 2D és a 3D célenergia különbözik,
-a próba azt hasonlítja, mennyi kell a saját célhoz. Ennek okát nem vizsgáltuk.
+\subsection{Feltáró vizsgálat: a változatosság növelése}
+
+A változatosság gyors elvesztése miatt két egyszerű beavatkozást próbáltunk ki.
+Hipotézist nem fogalmaztunk meg hozzájuk, az eredményeket feltáró jelleggel
+közöljük. Az egyik az átlagos mutációs ráta 2, 4, illetve 8-szorosára emelése
+(\texttt{rate2}, \texttt{rate4}, \texttt{rate8}). A másiknál az új generáció 5, 10,
+illetve 20\%-a véletlen új egyed (\texttt{imm5}, \texttt{imm10}, \texttt{imm20}),
+az elit egyedek változatlanul megmaradnak. Az új egyedeket is ki kell értékelni,
+ezért minden változat generációnként ugyanannyi kiértékelést használ, mint az
+alapváltozat. A mérés egyenletes profillal, a 3D 24 és 36 aminosavas láncon, 30
+maggal és a végső mérés céljaival és kereteivel készült. A \texttt{base} sor a
+végső mérés egyenletes profiljával azonos. A változatokat az alapváltozattal
+hasonlítottuk össze, a 12 összehasonlításon Holm-korrekcióval.
+
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\input{../results/remedies.tex}
+\caption{A változatosság növelésére kipróbált változatok. Siker: a célt elérő futások
+száma 30-ból. ERT: ezer kiértékelésben. Energia: a végső energia mediánja. Vált.: a
+futás egészére átlagolt változatosság mediánja, amelyben az új egyedek is
+szerepelnek. Félkövér: a legjobb érték oszloponként.}
+\label{tab:remedies}
+\end{table}
+
+A mutációs ráta növelése rontott az eredményen. A kétszeres ráta a 24 aminosavas
+láncon 7-ről 1-re csökkentette a sikeres futások számát (nyers $p=0{,}052$, Holm
+után nem szignifikáns), a négy- és a nyolcszoros ráta mellett pedig egyik futás sem
+érte el a célt. Mindkét láncon a végső energia ekkor szignifikánsan rosszabb (Holm
+utáni $p<0{,}001$). A változatosság 0,6 és 0,8 közé emelkedik, vagyis a populáció a
+véletlen szint (0,8) közelében marad, és nem hajtogat jobban.
+
+A véletlen új egyedek a 24 aminosavas láncon nem változtatnak az eredményen (7 helyett
+7 vagy 8 siker). A 36 aminosavas láncon az új egyedek arányával nő a sikeres futások
+száma (3, 4, 8, illetve 9), és csökken az ERT (2,7 millióról 2,1; 0,9, illetve 0,77
+millióra). A legnagyobb eltérésnél (\texttt{imm20}) a nyers $p$ a kiértékelésekre
+0,076, a sikerekre 0,10, Holm után egyik sem szignifikáns, a végső energia pedig nem
+változik. Az irány tehát egyezik azzal, hogy a változatosság hiánya lassítja a
+keresést, de 30 futással ez nem erősíthető meg.
 
 \section{Megbeszélés}
 
@@ -349,21 +364,21 @@ nincs olyan eltérés a kiértékelésekben vagy a sikerekben, amely a Holm-korr
 kibírná. Az egyetlen megerősített hatás, hogy a túl meredek \texttt{tail\_exp}
 rontja a végső energiát a 2D hosszú láncokon. A \texttt{tail} adja a legtöbb
 sikert (91 az egyenletes 73-ával szemben), de ez az előny egyetlen cellában sem
-szignifikáns, és nagyobb mintával lehetne eldönteni. Az adaptív változatok nem
+szignifikáns, és nagyobb mintával dönthető el. Az adaptív változatok nem
 múlják felül a fix profilokat.
 
 A konvergenciagörbék szerint a legjobb egyed gyorsan eléri a végső érték közelét,
-utána a futás megreked. A változatosság mérése összefér azzal, hogy ez a populáció
-változatosságának elvesztésével függ össze: a változatosság ugyanebben az
-időszakban esik a kezdeti érték harmadára vagy kisebbre, és a legkevésbé
-változatos profil, a \texttt{tail\_exp} az egyetlen, amelynek végső energiája a 2D
-hosszú láncokon megerősítetten rosszabb. Ez nem ok-okozati bizonyíték.
+utána a futás megreked. Ugyanebben az időszakban esik a populáció változatossága a
+kezdeti érték harmadára vagy kisebbre, ezért a megrekedés összefügghet a
+változatosság elvesztésével. A legkevésbé változatos profil, a \texttt{tail\_exp}
+az egyetlen, amelynek végső energiája a 2D hosszú láncokon megerősítetten
+rosszabb. Ez nem ok-okozati bizonyíték. A feltáró mérésben a véletlen új egyedek a
+36 aminosavas láncon kevesebb kiértékelést igényeltek, de ez nem szignifikáns, ezért
+a változatosság szerepét nem döntötte el. A mutációs ráta emelése ugyanakkor nem
+helyettesíti a változatosságot: a túl nagy ráta véletlen kereséssé alakítja a GA-t.
 
 \paragraph{Másodlagos kérdés.} A 3D változat valóban több H-H kapcsolatot ér el, és
-a különbség a hosszú láncoknál nagyobb. A várakozással ellentétben a 3D keresés
-nem bizonyult nehezebbnek: a 3D célt a legtöbb esetben gyakrabban éri el a GA,
-mint a 2D célt. Kivétel a 24 aminosavas lánc nyolc profiljából három
-(\texttt{tail\_exp}, \texttt{adaptive\_rev}, \texttt{adaptive\_exp}).
+a különbség a hosszú láncoknál nagyobb.
 
 \paragraph{Korlátok.}
 \begin{itemize}
@@ -373,8 +388,8 @@ sem oldotta meg, ezért itt az ERT nem értelmezhető, és csak az energiákat
 hasonlíthatjuk össze.
 \item Egy cellában 30 futás van, ezért csak nagy eltérés válik szignifikánssá. A
 korrekció több száz összehasonlításra szigorú.
-\item Az exponenciális alapot és a hosszú szekvenciák keretét a pilot alapján
-választottuk. A három újabb adaptív profil a hipotézisek rögzítése után került
+\item Az exponenciális alapot és a hosszú szekvenciák keretét előzetes mérés
+alapján választottuk. A három újabb adaptív profil a hipotézisek rögzítése után került
 a vizsgálatba, ezért az ezekre vonatkozó eredmények feltáró jellegűek.
 \item A változatosságot csak a lépéssorozatok szintjén mértük, a hajtogatások
 alakjának változatosságát nem.
@@ -387,16 +402,18 @@ Ezekre a memetikus változat, amelyben a GA minden utódját rövid helyi keres�
 követi, javulást hozhat. Ennek vizsgálata külön hipotézist és külön mérést
 igényel.
 
+\clearpage
 \section{Reprodukálhatóság}
 
 A teljes kód a \texttt{src/} mappában található. Python 3 szükséges, a használt
 csomagok a numpy, a scipy, a matplotlib és a pillow, pontos verzióik a
-\texttt{requirements.txt} fájlban szerepelnek. A véletlen magok a végső mérésnél 0
-és 29 között, a pilotnál 1000 és 1009 között vannak. Azonos mag azonos futást ad,
+\texttt{requirements.txt} fájlban szerepelnek. A véletlen magok 0 és 29 között
+vannak. Azonos mag azonos futást ad,
 a párhuzamos végrehajtás nem változtatja meg az eredményt. A teljes mérés 9
 processzen 54 percig tart, a változatossági mérés 51 percig. A projekt gyökeréből:
 \begin{verbatim}
 .venv/bin/python src/test_hp.py
+cc -O2 -o exact_3d src/exact_3d.c
 .venv/bin/python src/run_experiment.py --seeds 30 \
   --out results/final.csv --workers 9
 .venv/bin/python src/hp_stats.py results/final.csv
@@ -405,9 +422,14 @@ processzen 54 percig tart, a változatossági mérés 51 percig. A projekt gyök
   --out results/diversity.csv --workers 9
 .venv/bin/python src/hp_diversity.py stats results/diversity.csv
 .venv/bin/python src/hp_plots.py diversity results/diversity.csv
+.venv/bin/python src/hp_remedies.py run --seeds 30 \
+  --out results/remedies.csv --workers 9
+.venv/bin/python src/hp_remedies.py stats results/remedies.csv
 .venv/bin/python src/hp_fold3d.py videos
 \end{verbatim}
 A \texttt{videos/} mappa a GA egy-egy futását mutatja szekvenciánként és
-rácsonként (egyenletes profil, 0. mag), a célenergiával együtt.
+rácsonként (egyenletes profil, 0. mag), a célenergiával együtt. A 3D optimumokat a
+\texttt{./exact\_3d SEQ X Y Z Emin} parancs igazolja (szekvencia, a doboz mérete,
+a H-mag legkisebb kapcsolatszáma).
 
 \end{document}

@@ -7,6 +7,9 @@ Individual = string of relative moves. Settings:
     depend on the position in the move string (see PROFILES). The mean stays the same,
     only the shape changes, so profiles are compared fairly.
   - elitism (2 best copied unchanged): best fold is never lost
+  - optional random immigrants: every generation some children are replaced by fresh random
+    individuals (never the elites). The population size and the evaluations per generation stay
+    the same, so runs with and without immigrants use the same budget.
   - collisions allowed but penalised (5 each), so the GA can pass through invalid folds;
     one overlap can fake at most 4 contacts (6 neighbours - 2 chain bonds), so 5 > 4
 """
@@ -72,10 +75,11 @@ def population_diversity(moves_list):
 def run_ga(seq, alphabet, pop_size=200, generations=300, tournament_size=3,
            crossover_rate=0.9, mutation_rate=None, elite_count=2,
            collision_penalty=5, target_energy=None, mutation_profile="uniform", seed=None,
-           exp_base=None, track_diversity=False):
+           exp_base=None, track_diversity=False, immigrants=0):
     """Returns a dict with the best fold, its energy, history, evaluations and generations used.
 
     Stops early once a valid fold with energy <= target_energy is found.
+    immigrants = number of random new individuals per generation (default 0 = off, run unchanged).
     track_diversity adds "diversity" (hamming, unique) of the population for generation 0, 1, ...
     and "positions" (per-position distance of the last population). It does not change the run.
     """
@@ -117,7 +121,8 @@ def run_ga(seq, alphabet, pop_size=200, generations=300, tournament_size=3,
                 and best_fit <= target_energy:
             break
         children = [mutate(crossover(pick_parent(scored), pick_parent(scored)))
-                    for _ in range(pop_size - elite_count)]
+                    for _ in range(pop_size - elite_count - immigrants)]
+        children += ["".join(rng.choices(alphabet, k=length)) for _ in range(immigrants)]
         scored = sorted(scored[:elite_count] + [(score(c), c) for c in children])
         evaluations += len(children)
         history.append(scored[0])

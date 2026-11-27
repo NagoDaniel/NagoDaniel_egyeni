@@ -11,3 +11,4 @@ report/*.fls
 report/*.fdb_latexmk
 report/*.out
 report/*.toc
+report/*.synctex*

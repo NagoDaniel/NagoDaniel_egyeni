@@ -180,6 +180,18 @@ def test_diversity_tracking_does_not_change_the_run():
     assert len(b["diversity"]) == 13 and len(b["positions"]) == 18   # generation 0..12, one value per move
 
 
+def test_immigrants_keep_budget_and_elites():
+    from hp_ga import run_ga
+    seq = "HPHPPHHPHPPHPHHPPHPH"
+    kw = dict(pop_size=30, generations=12, seed=4)
+    base, imm = run_ga(seq, MOVES_3D, **kw), run_ga(seq, MOVES_3D, immigrants=6, **kw)
+    assert base["evaluations"] == imm["evaluations"] == 30 + 12 * 28   # same cost per generation
+    fits = [f for f, _ in imm["history"]]
+    assert fits == sorted(fits, reverse=True)                          # elites are never replaced
+    assert run_ga(seq, MOVES_3D, immigrants=0, **kw)["history"] == base["history"]
+    assert imm["history"] != base["history"]
+
+
 if __name__ == "__main__":
     tests = [f for name, f in sorted(globals().items()) if name.startswith("test_")]
     for t in tests:
