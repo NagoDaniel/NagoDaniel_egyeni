@@ -1,0 +1,13 @@
+CLAUDE.md
+PLAN.md
+.claude/
+.venv/
+__pycache__/
+.DS_Store
+exact_3d
+report/*.aux
+report/*.log
+report/*.fls
+report/*.fdb_latexmk
+report/*.out
+report/*.toc

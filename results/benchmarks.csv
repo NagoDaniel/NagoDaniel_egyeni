@@ -1,0 +1,14 @@
+dim,length,sequence,n_H,best_energy,status,witness_moves,witness_seed,note
+3,20,HPHPPHHPHPPHPHHPPHPH,10,-11,optimal,BEBBJFFJBBEBJEFFBJ,0,proved here: src/exact_3d.c (no H-core with >=14 edges threads)
+3,24,HHPPHPPHPPHPPHPPHPPHPPHH,10,-13,optimal,ELLBJJFLLFJJFBBJBBJBBJ,2,"proved here: H-core bound 15 edges - 2 HH bonds = 13, reached"
+3,25,PPHPPHHPPPPHHPPPPHHPPPPHH,9,-9,optimal,LFLLEEEBBEEJFEFFJJELLEJ,0,"proved here: H-core bound 13 edges - 4 HH bonds = 9, reached"
+3,36,PPPHHPPHHPPPPPHHHHHHHPPHHPPPPHHPPHPP,16,-18,best_known,,,"literature; paper's expansion has an extra trailing P (37), standard 36-mer used; source arXiv 2105.13226 Table 1"
+3,46,PPHHHPHHHPPPHPHHPHHPPHPHHHHPHPPHHHHHPHPHHPPHHP,27,-35,best_known,,,"literature, not verified here; source arXiv 2105.13226 Table 1"
+3,48,PPHPPHHPPHHPPPPPHHHHHHHHHHPPPPPPHHPPHHPPHPPHHHHH,25,-31,best_known,,,"literature, not verified here; source arXiv 2105.13226 Table 1"
+3,50,HHPHPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH,24,-34,best_known,,,"literature, not verified here; source arXiv 2105.13226 Table 1"
+3,58,PHPHHHPHHHPPHHPHPHHPHHHPHPHPHHPPHHHPPHPHPPPPHPPHPPHHPPHPPH,30,-44,best_known,,,"literature, not verified here; source arXiv 2105.13226 Table 1"
+3,60,PPHHHPHHHHHHHHPPPHHHHHHHHHHPHPPPHHHHHHHHHHHHPPPPHHHHHHPHHPHP,43,-55,best_known,,,"literature, not verified here; source arXiv 2105.13226 Table 1"
+3,64,HHHHHHHHHHHHPHPHPPHHPPHHPPHPPHHPPHHPPHPPHHPPHHPPHPHPHHHHHHHHHHHH,42,-59,best_known,,,"literature, not verified here; source arXiv 2105.13226 Table 1"
+2,20,HPHPPHHPHPPHPHHPPHPH,10,-9,best_known,JEJJBBJBJJEJBBJJEJ,0,2D literature value (hp_core.BENCHMARKS_2D); not re-proved
+2,24,HHPPHPPHPPHPPHPPHPPHPPHH,10,-9,best_known,BJJBJJBJJBEEBJJBJJBJJB,1,2D literature value (hp_core.BENCHMARKS_2D); not re-proved
+2,25,PPHPPHHPPPPHHPPPPHHPPPPHH,9,-8,best_known,EBJJBBJJEJBEEJJEBBJJEJE,6,2D literature value (hp_core.BENCHMARKS_2D); not re-proved

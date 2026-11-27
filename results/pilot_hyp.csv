@@ -1,0 +1,151 @@
+hypothesis,dim,length,comparison,metric,p_one_sided,delta,p_holm
+H1,2,20,tail < uniform,evaluations,0.9598616595477256,0.3999999999999999,1.0
+H1,2,20,tail_exp < uniform,evaluations,0.9204046242488862,0.32000000000000006,1.0
+H2,2,20,head > uniform,evaluations,0.29534137779567765,0.1399999999999999,1.0
+H3,2,20,adaptive > best fixed (uniform),evaluations,0.42259919240330046,0.06000000000000005,1.0
+H3,2,20,adaptive_rev > best fixed (uniform),evaluations,0.19247017160050167,0.21999999999999997,1.0
+H3,2,20,adaptive_exp > best fixed (uniform),evaluations,0.6785329824659373,-0.10999999999999999,1.0
+H3,2,20,adaptive_exp_rev > best fixed (uniform),evaluations,0.34309987962493743,0.1100000000000001,1.0
+H1,2,24,tail < uniform,evaluations,0.7787237538061624,0.16999999999999993,1.0
+H1,2,24,tail_exp < uniform,evaluations,0.9688351869108948,0.3899999999999999,1.0
+H2,2,24,head > uniform,evaluations,0.046717565304598724,0.3700000000000001,0.46717565304598724
+H3,2,24,adaptive > best fixed (uniform),evaluations,0.17583925981417597,0.21999999999999997,1.0
+H3,2,24,adaptive_rev > best fixed (uniform),evaluations,0.3043511488196498,0.1299999999999999,1.0
+H3,2,24,adaptive_exp > best fixed (uniform),evaluations,0.15385537423476509,0.24,1.0
+H3,2,24,adaptive_exp_rev > best fixed (uniform),evaluations,0.13377199005268892,0.26,1.0
+H1,2,25,tail < uniform,evaluations,0.25181562944916586,-0.12,1.0
+H1,2,25,tail_exp < uniform,evaluations,0.8643339390536173,0.10000000000000009,1.0
+H2,2,25,head > uniform,evaluations,0.5576821657313192,-0.010000000000000009,1.0
+H3,2,25,adaptive > best fixed (tail),evaluations,0.5215585054440343,0.0,1.0
+H3,2,25,adaptive_rev > best fixed (tail),evaluations,0.08403915951748514,0.19999999999999996,1.0
+H3,2,25,adaptive_exp > best fixed (tail),evaluations,0.5980764383973193,-0.040000000000000036,1.0
+H3,2,25,adaptive_exp_rev > best fixed (tail),evaluations,0.43557557288556026,0.040000000000000036,1.0
+H1,2,36,tail < uniform,evaluations,1.0,0.0,1.0
+H1,2,36,tail_exp < uniform,evaluations,1.0,0.0,1.0
+H2,2,36,head > uniform,evaluations,1.0,0.0,1.0
+H3,2,36,adaptive > best fixed (uniform),evaluations,1.0,0.0,1.0
+H3,2,36,adaptive_rev > best fixed (uniform),evaluations,1.0,0.0,1.0
+H3,2,36,adaptive_exp > best fixed (uniform),evaluations,1.0,0.0,1.0
+H3,2,36,adaptive_exp_rev > best fixed (uniform),evaluations,1.0,0.0,1.0
+H1,2,48,tail < uniform,evaluations,1.0,0.0,1.0
+H1,2,48,tail_exp < uniform,evaluations,1.0,0.0,1.0
+H2,2,48,head > uniform,evaluations,1.0,0.0,1.0
+H3,2,48,adaptive > best fixed (uniform),evaluations,1.0,0.0,1.0
+H3,2,48,adaptive_rev > best fixed (uniform),evaluations,1.0,0.0,1.0
+H3,2,48,adaptive_exp > best fixed (uniform),evaluations,1.0,0.0,1.0
+H3,2,48,adaptive_exp_rev > best fixed (uniform),evaluations,1.0,0.0,1.0
+H1,3,20,tail < uniform,evaluations,0.8480873288088926,0.26,1.0
+H1,3,20,tail_exp < uniform,evaluations,0.4398921505284963,-0.050000000000000044,1.0
+H2,3,20,head > uniform,evaluations,0.8797821623773858,-0.30000000000000004,1.0
+H3,3,20,adaptive > best fixed (tail_exp),evaluations,0.3668168218839343,0.10000000000000009,1.0
+H3,3,20,adaptive_rev > best fixed (tail_exp),evaluations,0.11306334827361558,0.33000000000000007,1.0
+H3,3,20,adaptive_exp > best fixed (tail_exp),evaluations,0.236254534162193,0.19999999999999996,1.0
+H3,3,20,adaptive_exp_rev > best fixed (tail_exp),evaluations,0.46982617293653633,0.030000000000000027,1.0
+H1,3,24,tail < uniform,evaluations,0.9027827233633958,0.22999999999999998,1.0
+H1,3,24,tail_exp < uniform,evaluations,0.6172397381501232,0.050000000000000044,1.0
+H2,3,24,head > uniform,evaluations,0.8996952125325627,-0.29000000000000004,1.0
+H3,3,24,adaptive > best fixed (head),evaluations,0.06030351087659011,0.3600000000000001,1.0
+H3,3,24,adaptive_rev > best fixed (head),evaluations,0.24743962727014207,0.16999999999999993,1.0
+H3,3,24,adaptive_exp > best fixed (head),evaluations,0.450610719906893,0.040000000000000036,1.0
+H3,3,24,adaptive_exp_rev > best fixed (head),evaluations,0.15385537423476509,0.24,1.0
+H1,3,25,tail < uniform,evaluations,0.8811192046978438,0.30000000000000004,1.0
+H1,3,25,tail_exp < uniform,evaluations,0.6475361110009747,0.09000000000000008,1.0
+H2,3,25,head > uniform,evaluations,0.15757663258998283,0.27,1.0
+H3,3,25,adaptive > best fixed (tail_exp),evaluations,0.2976571289336529,0.1499999999999999,1.0
+H3,3,25,adaptive_rev > best fixed (tail_exp),evaluations,0.3250123149530506,0.1299999999999999,1.0
+H3,3,25,adaptive_exp > best fixed (tail_exp),evaluations,0.9681888336999329,-0.48,1.0
+H3,3,25,adaptive_exp_rev > best fixed (tail_exp),evaluations,0.1905342706601259,0.24,1.0
+H1,3,36,tail < uniform,evaluations,0.8643339390536173,0.10000000000000009,1.0
+H1,3,36,tail_exp < uniform,evaluations,0.8643339390536173,0.10000000000000009,1.0
+H2,3,36,head > uniform,evaluations,0.18406012534675947,0.10000000000000009,1.0
+H3,3,36,adaptive > best fixed (uniform),evaluations,0.18406012534675947,0.10000000000000009,1.0
+H3,3,36,adaptive_rev > best fixed (uniform),evaluations,0.5,0.010000000000000009,1.0
+H3,3,36,adaptive_exp > best fixed (uniform),evaluations,0.18406012534675947,0.10000000000000009,1.0
+H3,3,36,adaptive_exp_rev > best fixed (uniform),evaluations,0.18406012534675947,0.10000000000000009,1.0
+H1,3,48,tail < uniform,evaluations,1.0,0.0,1.0
+H1,3,48,tail_exp < uniform,evaluations,1.0,0.0,1.0
+H2,3,48,head > uniform,evaluations,1.0,0.0,1.0
+H3,3,48,adaptive > best fixed (uniform),evaluations,1.0,0.0,1.0
+H3,3,48,adaptive_rev > best fixed (uniform),evaluations,1.0,0.0,1.0
+H3,3,48,adaptive_exp > best fixed (uniform),evaluations,1.0,0.0,1.0
+H3,3,48,adaptive_exp_rev > best fixed (uniform),evaluations,1.0,0.0,1.0
+H4,3v2,20,uniform: 3D < 2D,energy,3.193222375218491e-05,-1.0,0.0011814922788308416
+H5,3v2,20,uniform: 3D > 2D,evaluations,0.9801720196499563,-0.53,1.0
+H4,3v2,20,tail: 3D < 2D,energy,4.927158341511407e-05,-1.0,0.001478147502453422
+H5,3v2,20,tail: 3D > 2D,evaluations,0.9667029824899097,-0.42000000000000004,1.0
+H4,3v2,20,tail_exp: 3D < 2D,energy,2.4212699668570776e-05,-1.0,0.0009536458322023406
+H5,3v2,20,tail_exp: 3D > 2D,evaluations,0.9980789230426511,-0.73,1.0
+H4,3v2,20,head: 3D < 2D,energy,7.817276616211603e-05,-0.97,0.0016105843653541675
+H5,3v2,20,head: 3D > 2D,evaluations,0.9715213854980578,-0.47,1.0
+H4,3v2,20,adaptive: 3D < 2D,energy,4.255966001200016e-05,-1.0,0.0014470284404080056
+H5,3v2,20,adaptive: 3D > 2D,evaluations,0.9418454683902016,-0.4,1.0
+H4,3v2,20,adaptive_rev: 3D < 2D,energy,4.255966001200016e-05,-1.0,0.0014470284404080056
+H5,3v2,20,adaptive_rev: 3D > 2D,evaluations,0.9478846744038395,-0.4,1.0
+H4,3v2,20,adaptive_exp: 3D < 2D,energy,3.7605882855912566e-05,-1.0,0.00131620589995694
+H5,3v2,20,adaptive_exp: 3D > 2D,evaluations,0.7289282245549737,-0.15000000000000002,1.0
+H4,3v2,20,adaptive_exp_rev: 3D < 2D,energy,4.521546502003851e-05,-1.0,0.0014470284404080056
+H5,3v2,20,adaptive_exp_rev: 3D > 2D,evaluations,0.9257484653720537,-0.36,1.0
+H4,3v2,24,uniform: 3D < 2D,energy,6.667042634016963e-05,-1.0,0.0016105843653541675
+H5,3v2,24,uniform: 3D > 2D,evaluations,0.19677109726444225,0.20999999999999996,1.0
+H4,3v2,24,tail: 3D < 2D,energy,4.7054698756678963e-05,-1.0,0.0014586956614570479
+H5,3v2,24,tail: 3D > 2D,evaluations,0.11713314222334581,0.22999999999999998,1.0
+H4,3v2,24,tail_exp: 3D < 2D,energy,6.427544906448233e-05,-1.0,0.0016105843653541675
+H5,3v2,24,tail_exp: 3D > 2D,evaluations,0.785348469037902,-0.12,1.0
+H4,3v2,24,head: 3D < 2D,energy,6.62666973092858e-05,-1.0,0.0016105843653541675
+H5,3v2,24,head: 3D > 2D,evaluations,0.9616985596504085,-0.37,1.0
+H4,3v2,24,adaptive: 3D < 2D,energy,5.6042327051588126e-05,-1.0,0.0015131428303928793
+H5,3v2,24,adaptive: 3D > 2D,evaluations,0.43557557288556026,0.040000000000000036,1.0
+H4,3v2,24,adaptive_rev: 3D < 2D,energy,6.271502131827653e-05,-1.0,0.0016105843653541675
+H5,3v2,24,adaptive_rev: 3D > 2D,evaluations,0.5,0.010000000000000009,1.0
+H4,3v2,24,adaptive_exp: 3D < 2D,energy,4.927158341511407e-05,-1.0,0.001478147502453422
+H5,3v2,24,adaptive_exp: 3D > 2D,evaluations,0.8580877776469416,-0.21999999999999997,1.0
+H4,3v2,24,adaptive_exp_rev: 3D < 2D,energy,6.349163994881626e-05,-1.0,0.0016105843653541675
+H5,3v2,24,adaptive_exp_rev: 3D > 2D,evaluations,0.6065458203321707,-0.040000000000000036,1.0
+H4,3v2,25,uniform: 3D < 2D,energy,6.37826121644055e-05,-0.98,0.0016105843653541675
+H5,3v2,25,uniform: 3D > 2D,evaluations,0.9994593165944562,-0.78,1.0
+H4,3v2,25,tail: 3D < 2D,energy,0.00012050825694751297,-0.94,0.0016105843653541675
+H5,3v2,25,tail: 3D > 2D,evaluations,0.9786825477860837,-0.48,1.0
+H4,3v2,25,tail_exp: 3D < 2D,energy,3.3825343479563845e-05,-1.0,0.0012177123652642983
+H5,3v2,25,tail_exp: 3D > 2D,evaluations,0.9999167015414756,-0.9,1.0
+H4,3v2,25,head: 3D < 2D,energy,0.0002932801488741635,-0.89,0.0016105843653541675
+H5,3v2,25,head: 3D > 2D,evaluations,0.974834539988572,-0.41000000000000003,1.0
+H4,3v2,25,adaptive: 3D < 2D,energy,0.00035910488832606967,-0.84,0.0016105843653541675
+H5,3v2,25,adaptive: 3D > 2D,evaluations,0.9885622058677235,-0.54,1.0
+H4,3v2,25,adaptive_rev: 3D < 2D,energy,2.8603212184168223e-05,-1.0,0.0010869220629983925
+H5,3v2,25,adaptive_rev: 3D > 2D,evaluations,0.9999167015414756,-0.9,1.0
+H4,3v2,25,adaptive_exp: 3D < 2D,energy,2.3841145805058515e-05,-1.0,0.0009536458322023406
+H5,3v2,25,adaptive_exp: 3D > 2D,evaluations,0.9999111974909659,-0.96,1.0
+H4,3v2,25,adaptive_exp_rev: 3D < 2D,energy,0.0015988616357915189,-0.74,0.0016105843653541675
+H5,3v2,25,adaptive_exp_rev: 3D > 2D,evaluations,0.9817075970938681,-0.48,1.0
+H4,3v2,36,uniform: 3D < 2D,energy,7.251798115363159e-05,-1.0,0.0016105843653541675
+H5,3v2,36,uniform: 3D > 2D,evaluations,0.8643339390536173,-0.09999999999999998,1.0
+H4,3v2,36,tail: 3D < 2D,energy,4.991926880632451e-05,-1.0,0.001478147502453422
+H5,3v2,36,tail: 3D > 2D,evaluations,1.0,0.0,1.0
+H4,3v2,36,tail_exp: 3D < 2D,energy,7.558125624572678e-05,-1.0,0.0016105843653541675
+H5,3v2,36,tail_exp: 3D > 2D,evaluations,1.0,0.0,1.0
+H4,3v2,36,head: 3D < 2D,energy,6.194555251362183e-05,-1.0,0.0016105843653541675
+H5,3v2,36,head: 3D > 2D,evaluations,1.0,0.0,1.0
+H4,3v2,36,adaptive: 3D < 2D,energy,6.667042634016963e-05,-1.0,0.0016105843653541675
+H5,3v2,36,adaptive: 3D > 2D,evaluations,1.0,0.0,1.0
+H4,3v2,36,adaptive_rev: 3D < 2D,energy,7.080966757313317e-05,-1.0,0.0016105843653541675
+H5,3v2,36,adaptive_rev: 3D > 2D,evaluations,0.8643339390536173,-0.09999999999999998,1.0
+H4,3v2,36,adaptive_exp: 3D < 2D,energy,8.105536723700762e-05,-1.0,0.0016105843653541675
+H5,3v2,36,adaptive_exp: 3D > 2D,evaluations,1.0,0.0,1.0
+H4,3v2,36,adaptive_exp_rev: 3D < 2D,energy,0.00011923762615542782,-0.97,0.0016105843653541675
+H5,3v2,36,adaptive_exp_rev: 3D > 2D,evaluations,1.0,0.0,1.0
+H4,3v2,48,uniform: 3D < 2D,energy,8.246871097734522e-05,-1.0,0.0016105843653541675
+H5,3v2,48,uniform: 3D > 2D,evaluations,1.0,0.0,1.0
+H4,3v2,48,tail: 3D < 2D,energy,8.4864804330725e-05,-1.0,0.0016105843653541675
+H5,3v2,48,tail: 3D > 2D,evaluations,1.0,0.0,1.0
+H4,3v2,48,tail_exp: 3D < 2D,energy,6.913158435738506e-05,-1.0,0.0016105843653541675
+H5,3v2,48,tail_exp: 3D > 2D,evaluations,1.0,0.0,1.0
+H4,3v2,48,head: 3D < 2D,energy,7.558125624572678e-05,-1.0,0.0016105843653541675
+H5,3v2,48,head: 3D > 2D,evaluations,1.0,0.0,1.0
+H4,3v2,48,adaptive: 3D < 2D,energy,0.00011338156118301162,-1.0,0.0016105843653541675
+H5,3v2,48,adaptive: 3D > 2D,evaluations,1.0,0.0,1.0
+H4,3v2,48,adaptive_rev: 3D < 2D,energy,0.00010038094079509851,-0.99,0.0016105843653541675
+H5,3v2,48,adaptive_rev: 3D > 2D,evaluations,1.0,0.0,1.0
+H4,3v2,48,adaptive_exp: 3D < 2D,energy,7.647391205932291e-05,-1.0,0.0016105843653541675
+H5,3v2,48,adaptive_exp: 3D > 2D,evaluations,1.0,0.0,1.0
+H4,3v2,48,adaptive_exp_rev: 3D < 2D,energy,7.828273587717259e-05,-1.0,0.0016105843653541675
+H5,3v2,48,adaptive_exp_rev: 3D > 2D,evaluations,1.0,0.0,1.0
